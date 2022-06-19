@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\MainPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,11 @@ Route::get('/', function () {
 //     return view('pages.index');
 // });
 Route::get('/test',[PagesController::class,"index"])->name("/test");
-Route::get('/admin',[PagesController::class,"dashboard"])->name("/admin");
+Route::get('/admin',[PagesController::class,"dashboard"])->name('admin.dashboard');
+Route::get('/admin/main',[MainPageController::class,"index"])->name('admin.main');
+Route::put('/admin/main',[MainPageController::class,"update"])->name('admin.main.update');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
